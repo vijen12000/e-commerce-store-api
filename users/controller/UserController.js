@@ -1,0 +1,18 @@
+const UserModel = require('../../common/models/User');
+
+module.exports = {
+    getAllUsers: (req, res) => {
+        UserModel
+            .findAllUsers(req.query)
+            .then((user) => {
+                return res
+                    .status(200)
+                    .json({status: true, data: users});
+            })
+            .catch((err) => {
+                return res
+                    .status(500)
+                    .json({status: false, error: err});
+            })
+    }
+}
